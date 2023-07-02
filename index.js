@@ -1,5 +1,5 @@
 // create new image function
-function newImage(url, left, bottom){
+function newImage(url, left, bottom) {
     let image = document.createElement('img')
     image.src = url
     image.style.position = 'fixed'
@@ -9,7 +9,8 @@ function newImage(url, left, bottom){
     return image
 }
 
-function newItem(url, left, bottom){
+// create new item that can be picked up on double click and added to inventory
+function newItem(url, left, bottom) {
     let item = newImage(url, left, bottom)
     item.addEventListener('click', () => {
         item.remove()
@@ -20,10 +21,11 @@ function newItem(url, left, bottom){
     return item
 }
 
-function move(image){
+// positioning function
+function move(image) {
     image.style.position = 'fixed'
-    
-    function moveToCoordinates(left, bottom){
+
+    function moveToCoordinates(left, bottom) {
         image.style.left = left + 'px'
         image.style.bottom = bottom + 'px'
     }
@@ -32,7 +34,7 @@ function move(image){
         to: moveToCoordinates
     }
 }
-
+// positions images
 move(newImage('assets/green-character.gif')).to(100, 250)
 move(newImage('assets/tree.png')).to(200, 450)
 move(newImage('assets/pillar.png')).to(350, 250)
@@ -40,11 +42,14 @@ move(newImage('assets/pine-tree.png')).to(450, 350)
 move(newImage('assets/crate.png')).to(150, 350)
 move(newImage('assets/well.png')).to(500, 575)
 
+// positiions itmes
 move(newItem('assets/sword.png')).to(500, 555)
 move(newItem('assets/shield.png')).to(165, 335)
 move(newItem('assets/staff.png')).to(600, 250)
 
-function newInventory(){
+
+// creates inventory
+function newInventory() {
     let inventory = document.createElement('div')
     inventory.style.position = 'fixed'
     // inventory.style.bottom = '0px'
@@ -62,5 +67,5 @@ function newInventory(){
 }
 
 const inventory = newInventory()
-
+// positions inventory
 move(inventory).to(0, 0)
